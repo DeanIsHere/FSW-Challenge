@@ -1,0 +1,75 @@
+body{
+    width: 1441.55px;  
+}
+.main-page{
+    background-image: url(assets/main-bg.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 960.14px;
+}
+.navbar{
+    background: rgb(0, 0, 0, 0.5);
+    height: 90px ;
+    padding: 0%;
+    width: 1441.55px;
+}
+.jumbotron{
+    padding-top: 223.7px;
+    height: 870.12px;
+}
+.display-4{
+    margin: 0%;
+    padding-bottom: 50px;
+}
+.lead{
+    margin: 0%;
+    padding-bottom: 50px;
+    }
+.font-a{
+    font-family: Arial;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 83px;
+    letter-spacing: 3px;
+    text-align: center;   
+}
+.font-b{
+    font-family: Arial;
+    letter-spacing: 3px;
+    text-align: center;   
+}
+*.btn{
+    height: 60px;
+    width: 260.3616943359375px;
+    border-radius: 4px;
+
+    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
+    border-radius: 4px;
+
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: ;
+    cursor: ;
+
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+.tombol-next{
+    padding-top: 285.22px;
+    margin-bottom: 0%;
+}
+.page-2{
+    background-image: url(assets/the-games-bg.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 1051.43px;
+}
+,container{
+    padding: 0%;
+}
