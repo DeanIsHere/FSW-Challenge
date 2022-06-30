@@ -1,72 +1,125 @@
-body{
-    width: 1441.55px;  
-}
-.main-page{
-    background-image: url(assets/main-bg.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 960.14px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .navbar{
-    background: rgb(0, 0, 0, 0.5);
-    height: 90px ;
-    padding: 0%;
-    width: 1441.55px;
+    background: rgba(0, 0, 0, 0.5);
+    height: 90px;
+}
+
+.container-fluid .navbar-brand{
+    margin-left:107px;
+    margin-right:142px;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.container-fluid .nav-link{
+    margin-right: 45px;
+    text-transform: uppercase;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.container-fluid .nav-sign2{
+    margin-right: 15px;
+    text-transform: uppercase;
+}
+.container-fluid .nav-sign{
+    margin-right: 110px;
+    text-transform: uppercase;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 .jumbotron{
-    padding-top: 223.7px;
-    height: 870.12px;
-}
-.display-4{
-    margin: 0%;
-    padding-bottom: 50px;
-}
-.lead{
-    margin: 0%;
-    padding-bottom: 50px;
-    }
-.font-a{
-    font-family: Arial;
-    font-size: 72px;
-    font-weight: 700;
-    line-height: 83px;
-    letter-spacing: 3px;
-    text-align: center;   
-}
-.font-b{
-    font-family: Arial;
-    letter-spacing: 3px;
-    text-align: center;   
-}
-*.btn{
-    height: 60px;
-    width: 260.3616943359375px;
-    border-radius: 4px;
-
-    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
-    border-radius: 4px;
-
-    border: none;
-    color: black;
-    padding: 15px 32px;
+    background-image: url('assets/main-bg.jpg');
+    height: 960.14px;
+    background-size:cover;
+    border-radius: 0px;
     text-align: center;
-    text-decoration: none;
-    display: ;
-    cursor: ;
-
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 0px;
-  }
-.tombol-next{
-    padding-top: 285.22px;
-    margin-bottom: 0%;
-}
-.page-2{
-    background-image: url(assets/the-games-bg.jpg);
-    background-size: contain;
     background-repeat: no-repeat;
-    height: 1051.43px;
+}
+ 
+.jumbotron h1 {
+    padding-top:313.7px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 83px;
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+ }
+
+ .jumbotron p{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 150;
+    font-size: 25px;
+    line-height: 83px;
+    text-align: center;
+    letter-spacing: 3px;
+ }
+.jumbotron btn{
+    margin-top: ;
+ }
+
+.btn{
+    border-radius: 4px;
+    text-align: center;
+    padding: 15px 81.5px 15px 81.5px;
+    margin-top: 35px;
+    margin-bottom: 285.22px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+    
+    text-align: center;
+}
+
+div .jumbotron p .str{
+    margin-top: 0px;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 10;
+    font-size: 12px;
+    line-height: 22px;
+    /* or 183% */
+    
+    text-align: justify;
+    text-transform: uppercase;
+    
+}
+@media (min-width:992px){
+.jumbotron{
+    margin-top: -90px;
+}
+
 }
