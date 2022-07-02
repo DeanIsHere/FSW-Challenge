@@ -183,12 +183,83 @@ div .jumbotron p .str{
 
 /* section 4 */
 .sec4{
-    background-image: url('assets/requirements.png');
+    background: radial-gradient(33.26% 45% at 64.32% 47.1%, rgba(255, 255, 255, 0) 3.36%, rgba(0, 0, 0, 0) 19.22%, #080A0B 99.74%), url('assets/requirements.png');
+    /* background-image: url('assets/requirements.png'); */
     height: 960.16px;
     background-size:cover;
     border-radius: 0px;
     text-align: center;
     background-repeat: no-repeat;
+}
+
+.sec4 .col-lg-4{
+    margin-top: 145px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.sec4 h1{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-align: left;
+    margin-top: 54px;
+}
+
+.sec4 .spek-1{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    /* identical to box height */
+    letter-spacing: 2px;
+    color: #FFB548;
+}
+
+.sec4 .spek-2{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* or 122% */
+    color: #FFFFFF;
+    text-align: left; 
+}
+
+.sec4 .img-box{
+    position: absolute;
+    margin-top: 40px;
+    margin-left:-574px;
+}
+
+.sec4 .img-box-2{
+    position: absolute;
+    margin-top: 40px;
+    margin-left: -290px;
+}
+
+.sec4 .img-box-3{
+    position: absolute;
+    margin-top: 170px;
+    margin-left: -574px;
+}
+
+.sec4 .img-box-4{
+    position: absolute;
+    margin-top: 292px;
+    margin-left: -574px;
 }
 /* section 5 */
 .sec5{
@@ -213,7 +284,7 @@ div .jumbotron p .str{
 
 .sec6 .gradient-1 {
     margin-top: 50px;
-    background: radial-gradient(transparent,#080A0B), url('assets/skull.png');
+    background: radial-gradient(45.43% 53.19% at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 46.15%, #080A0B 99.74%), url('assets/skull.png');
     position: relative;
     height: 694.41px;
     display: block;
