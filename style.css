@@ -133,16 +133,16 @@ div .jumbotron p .str{
     padding-top: 250px;
 }
 
-.container-fluid .row .carousel-item{
+.sec2 .container-fluid .row .carousel-item{
     width: 858px;
     height: 477px;
-    padding-left: 50px;
+    padding-left: 0px;
 }
 
-.container-fluid .row .carousel-item img{
+.sec2 .container-fluid .row .carousel-inner img{
     width: 858px;
     height: 477px;
-    object-fit: cover;
+    object-fit: contain;
 }
 /* Section 3 */
 .sec3{
@@ -271,6 +271,64 @@ div .jumbotron p .str{
     border-radius: 0px;
     text-align: center;
     background-repeat: no-repeat;
+}
+
+.sec5 .container .row .col-lg-6 h1{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    margin-top: 340px;
+    color: #FFFFFF;
+}
+
+.sec5 .container .row .col-lg-6 p{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* or 122% */
+    margin-bottom: 60px;
+    color: #FFFFFF;
+}
+
+.sec5 .container .row .col-lg-6 .tombol{
+    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
+    border-radius: 4px;
+    height: 60px;
+    width: 260.3616027832031px;
+    border-radius: 4px;
+    margin-bottom: 0px;
+    margin-top: 0;
+
+}
+
+.sec5 .card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.sec5 .foto{
+    border-radius: 50%;
+    position:relative;
+    display: inline;
+    z-index: 2;
+    margin-top: 10px;
+}
+.sec5 .orange{
+    position:relative;
+    display: inline;
+    margin-left: -60px;
+    margin-bottom: -10px;
+    margin-top: 10px;
+}
+.sec5 .row .col-md-7 p .text-left{
+    margin-bottom: 0%;
 }
 /* section 6 */
 .sec6{
