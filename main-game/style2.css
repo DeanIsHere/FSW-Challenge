@@ -1,0 +1,15 @@
+body{
+    background-color: aqua;
+}
+
+.logo-text{
+    width: 410px;
+    height: 62px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    text-align: center;
+    color: #F9B23D;
+}
