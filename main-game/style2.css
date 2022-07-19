@@ -1,10 +1,9 @@
 body{
-    background-color: aqua;
+    background-color: #F9B23D;
 }
 
 .logo-text{
-    width: 410px;
-    height: 62px;
+    
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
@@ -12,4 +11,15 @@ body{
     line-height: 49px;
     text-align: center;
     color: #F9B23D;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.tbl-back{
+    margin-left: 30px;
+
+}
+.back-text{
+    margin-top: 30px;
+    align-content: center;
 }
