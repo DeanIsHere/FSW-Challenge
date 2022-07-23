@@ -1,6 +1,5 @@
 const bot_list = ["batu","kertas","gunting"];
-let bot_sample = bot_list[Math.floor(Math.random()*bot_list.length)];
-let user_sample = ""
+// let bot_sample = bot_list[Math.floor(Math.random()*bot_list.length)];
 let user_hand_batu = document.getElementById("batu")
 let user_hand_gunting = document.getElementById("gunting")
 let user_hand_kertas = document.getElementById("kertas")
@@ -8,6 +7,58 @@ let center_item = document.getElementById("center-item")
 let refresh = document.getElementById("refresh-button")
 let addElement1 = [...document.getElementsByClassName("player-hand")]
 
+let active = true
+
+user_hand_kertas.addEventListener("click", () =>{
+    let user_sample ="kertas"
+    stat= new Status(user_sample)
+    active = false
+    console.log(stat)
+    gamerun()
+})
+user_hand_batu.addEventListener("click", () =>{
+    let user_sample ="batu"
+    stat= new Status(user_sample)
+    active = false
+    console.log(stat)
+    gamerun()
+})
+user_hand_gunting.addEventListener("click", () =>{
+    let user_sample ="gunting"
+    stat= new Status(user_sample)
+    active = false
+    console.log(stat)
+    gamerun()
+})
+
+// if (active === true) {
+//     user_hand_kertas.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_kertas.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#9C835F")
+//     })
+//     user_hand_batu.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_batu.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#9C835F")
+//     })
+//     user_hand_gunting.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_gunting.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#9C835F")
+//     }) 
+// }
+    
+
+class Status{
+    constructor(user_sample){
+        this.user = user_sample
+        this.bot = bot_list[Math.floor(Math.random()*bot_list.length)]
+    }
+}
 const comparator = (user_sample,bot_sample) =>{
     if(user_sample === bot_sample){
         console.log('Tie')
@@ -62,21 +113,6 @@ const kotak_bot = (bot_sample) =>{
     }
 }
 
-const user_picker = () => {
-    user_hand_kertas.addEventListener("click", () =>{
-        user_sample ="kertas"
-        gamerun()
-    })
-    user_hand_batu.addEventListener("click", () =>{
-        user_sample ="batu"
-        gamerun()
-    })
-    user_hand_gunting.addEventListener("click", () =>{
-        user_sample ="gunting"
-        gamerun()
-    })
-}
-
 const refresh_button = () => {
     refresh.addEventListener("click", () =>{
         center_item.innerHTML = `<img style="margin-top: 90px;"src="game-assets/VS.svg" alt=""></img>`
@@ -93,7 +129,7 @@ const refresh_button = () => {
     })
 }
 
-const kotak_user = () =>{
+const kotak_user = (user_sample) =>{
     switch (user_sample) {
         case "batu":
             document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#C4C4C4")
@@ -111,10 +147,8 @@ const kotak_user = () =>{
 }
 
 const gamerun = () => {
-    comparator(user_sample,bot_sample)
-    kotak_bot(bot_sample)
-    kotak_user()
+    comparator(stat.user,stat.bot)
+    kotak_bot(stat.bot)
+    kotak_user(stat.user)
     refresh_button()
 }
-
-user_picker()
