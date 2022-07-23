@@ -1,5 +1,5 @@
 body{
-    background-color: #F9B23D;
+    background-color: #9C835F !important;
 }
 
 .logo-text{
@@ -22,4 +22,27 @@ body{
 .back-text{
     margin-top: 30px;
     align-content: center;
+}
+
+.center-item{
+    text-align: center;
+    margin: auto;
+}
+
+.back-hand{
+}
+.player-hand{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+.bot-hand{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.refresh-button{
+    cursor: pointer;
 }
