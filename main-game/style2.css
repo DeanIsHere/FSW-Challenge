@@ -45,4 +45,9 @@ body{
 }
 .refresh-button{
     cursor: pointer;
+    transition: transform .7s ease-in-out;
 }
+
+.refresh-button:hover {
+    transform: rotate(360deg);
+  }

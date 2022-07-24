@@ -1,5 +1,4 @@
 const bot_list = ["batu","kertas","gunting"];
-// let bot_sample = bot_list[Math.floor(Math.random()*bot_list.length)];
 let user_hand_batu = document.getElementById("batu")
 let user_hand_gunting = document.getElementById("gunting")
 let user_hand_kertas = document.getElementById("kertas")
@@ -29,29 +28,7 @@ user_hand_gunting.addEventListener("click", () =>{
     active = false
     console.log(stat)
     gamerun()
-})
-
-// if (active === true) {
-//     user_hand_kertas.addEventListener("mouseover", () =>{
-//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#C4C4C4")
-//     })
-//     user_hand_kertas.addEventListener("mouseout", () =>{
-//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#9C835F")
-//     })
-//     user_hand_batu.addEventListener("mouseover", () =>{
-//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#C4C4C4")
-//     })
-//     user_hand_batu.addEventListener("mouseout", () =>{
-//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#9C835F")
-//     })
-//     user_hand_gunting.addEventListener("mouseover", () =>{
-//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#C4C4C4")
-//     })
-//     user_hand_gunting.addEventListener("mouseout", () =>{
-//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#9C835F")
-//     }) 
-// }
-    
+})  
 
 class Status{
     constructor(user_sample){
@@ -152,3 +129,56 @@ const gamerun = () => {
     kotak_user(stat.user)
     refresh_button()
 }
+// HOVER FUNCTION
+// batu
+function bigImg1(x) {
+    x.style.height = "152px";
+    x.style.width = "188px";
+  }
+  
+  function normalImg1(x) {
+    x.style.height = "92px";
+    x.style.width = "128px";
+  }
+// kertas
+  function bigImg2(x) {
+    x.style.height = "210px";
+    x.style.width = "165px";
+  }
+  
+  function normalImg2(x) {
+    x.style.height = "150px";
+    x.style.width = "115px";
+  }
+//   gunting
+  function bigImg3(x) {
+    x.style.height = "220px";
+    x.style.width = "194px";
+  }
+  
+  function normalImg3(x) {
+    x.style.height = "160px";
+    x.style.width = "134px";
+  }
+
+// another hover function
+  // if (active === true) {
+//     user_hand_kertas.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_kertas.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-kertas-pl[fill]').setAttribute("fill","#9C835F")
+//     })
+//     user_hand_batu.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_batu.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-batu-pl[fill]').setAttribute("fill","#9C835F")
+//     })
+//     user_hand_gunting.addEventListener("mouseover", () =>{
+//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#C4C4C4")
+//     })
+//     user_hand_gunting.addEventListener("mouseout", () =>{
+//         document.querySelector('svg #kotak-gunting-pl[fill]').setAttribute("fill","#9C835F")
+//     }) 
+// }
