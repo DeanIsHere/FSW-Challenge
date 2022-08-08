@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GAME SUIT DEAN</title>
+    <link rel="stylesheet" href="style2.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Tombol Back -->
+    <div class="back-text">
+    <a class="tbl-back"> 
+        <svg width="36" height="38" viewBox="0 0 36 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35.0039 37.8633L0.09375 22.4648V17.4375L35.0039 0V8.4375L10.957 19.582L35.0039 29.4609V37.8633Z" fill="#724C21"/>
+        </svg>  
+        <img class="tbl-back" src="game-assets/logo 1.png" alt="logo">
+        <p class="logo-text tbl-back">ROCK PAPER SCISSORS</p>
+    </a>
+    </div>
+    <!-- Grid Game -->
+    <div class="container-fluid text-center my-5">
+        <div class="row">
+          <div class="col">
+            <img onmouseover="bigImg1(this)" onmouseout="normalImg1(this)" src="game-assets/batu 1.png" alt="bt-player" id="batu" class="player-hand" >
+            <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+              <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-batu-pl"/>
+            </svg>
+          </div>
+          <div class="col">
+            
+          </div>
+          <div class="col">
+            <img src="game-assets/batu 1.png" alt="bt-bot" class="bot-hand">
+            <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+              <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-batu-bot"/>
+            </svg>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col my-5">
+                <img onmouseover="bigImg2(this)" onmouseout="normalImg2(this)" src="game-assets/kertas 1.png" alt="kt-player" id="kertas" class="player-hand">
+                <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-kertas-pl"/>
+                </svg>
+            </div>
+            <div style=""class="col" id="center-item" class="center-item">
+              <img style="margin-top: 90px;"src="game-assets/VS.svg" alt="">
+            </div>
+            <div class="col my-5">
+                <img src="game-assets/kertas 1.png" alt="kt-bot" class="bot-hand">
+                <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-kertas-bot"/>
+                </svg>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+                <img onmouseover="bigImg3(this)" onmouseout="normalImg3(this)" src="game-assets/gunting 1.png" alt="gt-player" id="gunting" class="player-hand"> 
+                <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-gunting-pl"/>
+                </svg>
+            </div>
+            <div class="col">
+              
+            </div>
+            <div class="col">
+                <img src="game-assets/gunting 1.png" alt="gt-bot" class="bot-hand">
+                <svg width="223" height="204" viewBox="0 0 223 204" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <rect width="223" height="204" rx="30" fill="#9C835F" id="kotak-gunting-bot"/>
+                </svg>
+            </div>
+          </div>
+      </div>
+      <!-- tombol reload -->
+      <div class="text-center">
+        <img src="game-assets/refresh 2.png" alt="" id="refresh-button" class="refresh-button">
+      </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+    <script src="script-game.js"></script>     
+</body>
+</html>
