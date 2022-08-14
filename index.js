@@ -13,7 +13,7 @@ app.set('view engine','ejs')
 // introduce static file
 app.use('/CSS', express.static(__dirname+'/CSS'))
 app.use('/JS', express.static(__dirname+'/JS'))
-app.use('/main-page-assets', express.static(__dirname+'/main-page-assets'))
+app.use('/game-assets', express.static(__dirname+'/game-assets'))
 app.use('/assets', express.static(__dirname+'/assets'))
 
 // read user data from json
@@ -38,12 +38,12 @@ app.post('/login', jsonParser, (req, res) => {
 })
 // main page
 app.get('/main-page', (req, res)=>{
-  // res.sendFile(path.join(__dirname + '/views/slider.html'))
   res.render("main-page")
 })
 // game page
-
-console.log("hello world")
+app.get('/game-page', (req, res)=>{
+  res.render("game-page")
+})
 
 // PORT
 app.listen(8000, () =>{
