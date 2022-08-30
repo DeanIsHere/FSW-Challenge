@@ -7,6 +7,7 @@ const path = require('path')
 const md5 = require('md5')
 const { retrieveAllData } = require('./JS/retrieveData')
 
+
 const jsonParser = bodyParser.json()
 // set view enginer
 app.set('view engine','ejs')
@@ -48,6 +49,21 @@ app.get('/game-page', (req, res)=>{
 app.get('/login-page',(req,res)=>{
   res.render("login-page")
 })
+//information page
+app.get('/user-list-page',(req,res)=>{
+  res.render("user-list-page")
+})
+// user details page
+app.get('/user-details-page',(req,res)=>{
+  res.render("user-details-page")
+})
+// user add page
+app.get('/user-add-page',(req,res)=>{
+  res.render("user-add-page")
+})
+
+//CREATE
+
 // PORT
 app.listen(8000, () =>{
   console.log("Application is running at localhost:8000")
