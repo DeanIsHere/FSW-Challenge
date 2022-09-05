@@ -32,13 +32,20 @@ app.get('/', function (req, res) {
         } 
       }
     if(checker){
-      res.send("Authorized")
+      res.status(200).send("Authorized")
     } else {
       res.status(401).send("Unauthorized")
     }
   })
   //VIEWS
-  
+  // user details page
+  app.get('/user-details-page/:id',async(req,res)=>{
+    const resp = await fetch (`http://localhost:4030//user-details/${req.params.id}`)
+    const data = resp.json()
+    
+    res.render("user-details-page",{userBiodatas: data})
+  })
+
   // main page
   app.get('/main-page', (req, res)=>{
     res.render("main-page")
@@ -52,13 +59,11 @@ app.get('/', function (req, res) {
     res.render("login-page")
   })
   //information page
-  app.get('/user-list-page',(req,res)=>{
-    res.render("user-list-page")
+  app.get('/user-list-page',async(req,res)=>{
+    const data = await users.findAll()
+    res.render("user-list-page", {userData: data})
   })
-  // user details page
-  app.get('/user-details-page',(req,res)=>{
-    res.render("user-details-page")
-  })
+  
   // user add page
   app.get('/user-add-page',(req,res)=>{
     res.render("user-add-page")
@@ -116,13 +121,38 @@ app.get('/find/:username', async (req,res) => {
     res.status(404).send('User not found')
   }
 })
-// READ biodatas from user
+// READ biodatas and hist use ID
 app.get('/user-details/:id', async (req, res) => {
   const data = await users.findByPk(req.params.id, {
-    include: {biodatas, histories}
+    include: [{model:biodatas},{model:histories}]
   })
   res.send(data)
 })
+//UPDATE biodatas
+app.put('/biodata/:id', jsonParser, async (req,res) => {
+  
+  const data = await biodatas.findByPk(req.params.id)
+        data.fullname= req.body.fullname,
+        data.address= req.body.address,
+        data.email= req.body.email,
+        data.age= req.body.age
+  data.save()
+  res.status(202).send('Data has been edited')
+})
+// UPDATE histories
+app.put('/histories/:id', jsonParser, async (req,res) => {
+  
+  const data = await histories.findByPk(req.params.id)
+        data.score= req.body.score,
+        data.attempt= req.body.attempt,
+        data.win= req.body.win,
+        data.lose= req.body.lose,
+        data.draw= req.body.draw
+  data.save()
+  res.status(202).send('Data has been edited')
+})
+//DELETE biodatas
+
 //PORT
 app.listen(4030, () => {
     console.log('APP IS RUNNING ON PORT:4030')
