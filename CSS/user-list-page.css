@@ -1,0 +1,19 @@
+.search-box {
+    width: 80%;
+    margin:auto
+}
+.form-control {
+    display: inline !important;
+    width:85% !important;
+}
+.super-user-greeting {
+    text-align: center;
+}
+.search-box .btn-primary {
+    margin-left: 10px;
+
+}
+.search-group{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
