@@ -18,4 +18,3 @@ const loginChecker = async() =>{
         alert("Failed to Login")
     }
 }
-

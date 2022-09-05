@@ -5,6 +5,7 @@ const jsonParser = bodyParser.json()
 const fs = require('fs')
 const md5 = require('md5')
 const path = require('path')
+const fetch = require('node-fetch')
 
 const {users, biodatas, histories} = require('./models');
 const { retrieveAllData } = require('./JS/retrieveData')
@@ -17,6 +18,13 @@ app.use('/JS', express.static(__dirname+'/JS'))
 app.use('/game-assets', express.static(__dirname+'/game-assets'))
 app.use('/assets', express.static(__dirname+'/assets'))
 
+// user details page
+app.get('/user-details-page/:id',async(req,res)=>{
+  const resp = await fetch(`http://localhost:4030/user-details/${req.params.id}`)
+  const data = await resp.json()
+
+  res.render("user-details-page",{userBiodata: data})
+})
 // read user data from json
 app.get('/', function (req, res) {
     res.status(404).send(retrieveAllData('user.json')) 
@@ -40,10 +48,10 @@ app.get('/', function (req, res) {
   //VIEWS
   // user details page
   app.get('/user-details-page/:id',async(req,res)=>{
-    const resp = await fetch (`http://localhost:4030//user-details/${req.params.id}`)
-    const data = resp.json()
-    
-    res.render("user-details-page",{userBiodatas: data})
+    const resp = await fetch(`http://localhost:4030/user-details/${req.params.id}`)
+    const data = await resp.json()
+
+    res.render("user-details-page",{userBiodata: data})
   })
 
   // main page

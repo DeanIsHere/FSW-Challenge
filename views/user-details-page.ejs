@@ -8,39 +8,57 @@
     <link rel="stylesheet" href="CSS/user-details-page.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<style>
+    .user-details{
+    width: 70%;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+
+.btn{
+    margin-top: 20px;
+}
+
+.user-information-box{
+    margin-bottom: 15px;
+}
+</style>
 </head>
 <body>
-    <h1>Dean Information</h1>
-    <div class="user-details"
+    <h1><%= userBiodata.username %>  Information</h1>
+    <div class="user-details">
         <div class="row g-3">
             <div class="user-information-box col-12">
                 <label  class="form-label">USER NAME</label>
-                <input type="text" class="form-control" id="inputUserame" placeholder="Input User Name">
+                <input type="text" class="form-control" id="inputUserame" placeholder="Input User Name" value="<%= userBiodata.username %>" disabled>
             </div>
 
             <div class="user-information-box col-12">
                 <label  class="form-label">PASSWORD</label>
-                <input type="text" class="form-control" id="inputPassword" placeholder="Input Password">
+                <input type="text" class="form-control" id="inputPassword" placeholder="Input Password" value="<%= userBiodata.password %>">
             </div>
 
             <div class="user-information-box col-12">
                 <label  class="form-label">FULLNAME</label>
-                <input type="text" class="form-control" id="inputFullname" placeholder="Input Fullname">
+                <input type="text" class="form-control" id="inputFullname" placeholder="Input Fullname" value="<%= userBiodata.biodata.fullname %>">
             </div>
             
             <div class="user-information-box col-12">
                 <label class="form-label">ADDRESS</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Input Address">
+                <input type="text" class="form-control" id="inputAddress" placeholder="Input Address" value="<%= userBiodata.biodata.address %>">
             </div>
             
             <div class="user-information-box col-12">
                 <label class="form-label">EMAIL</label>
-                <input type="text" class="form-control" id="inputEmail" placeholder="Input Email">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Input Email" value="<%= userBiodata.biodata.email %>">
             </div>
 
             <div class="user-information-box col-12">
                 <label class="form-label">AGE</label>
-                <input type="text" class="form-control" id="inputAge" placeholder="Input Age">
+                <input type="text" class="form-control" id="inputAge" placeholder="Input Age" value="<%= userBiodata.biodata.age %>">
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>

@@ -1,11 +1,11 @@
-const inputHandler = async() =>{
+const addUsers = async() =>{
+    console.log("click input")
     let inputUsername = document.getElementById("inputUsername").value
     let inputPassword = document.getElementById("inputPassword").value
     let inputFullname = document.getElementById("inputFullname").value
     let inputAddress = document.getElementById("inputAddress").value
     let inputEmail = document.getElementById("inputEmail").value
     let inputAge = document.getElementById("inputAge").value
-    
     const resp = await fetch('http://localhost:4030/add-user',{
         method:'POST',
         headers:{
