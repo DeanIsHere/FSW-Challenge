@@ -81,9 +81,9 @@ const handleDeleteHistory = async (histId) => {
 
 //UPDATE histories
 const handleEdithistory = async(histId) => {
-  let Win = document.getElementById("updateWin").value
-  let Lose = document.getElementById("updateLose").value
-  let Draw = document.getElementById("updateDraw").value
+  let Win = document.getElementById(`updateWin${histId}`).value
+  let Lose = document.getElementById(`updateLose${histId}`).value
+  let Draw = document.getElementById(`updateDraw${histId}`).value
   const resp = await fetch(`http://localhost:4030/histories/${histId}`, {
     method: 'PUT',
     headers: {

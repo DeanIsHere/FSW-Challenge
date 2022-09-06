@@ -102,12 +102,12 @@ margin-bottom: 30px;
                     <% userBiodata.histories.forEach(hist => { %>
                     <tr>
                         <th scope="row"><input type="text" class="form-control" id=""  value="<%= number = number+1%>" disabled></td></th>
-                        <td><input type="text" class="form-control" id="updateScore"  value="<%=hist.score%>" disabled></td>
-                        <td><input type="text" class="form-control" id="updateAttempt"  value="<%=hist.attempt%>" disabled></td>
-                        <td><input type="text" class="form-control" id="updateWin"  value="<%=hist.win%>"></td>
-                        <td><input type="text" class="form-control" id="updateLose"  value="<%=hist.lose%>"></td>
-                        <td><input type="text" class="form-control" id="updateDraw"  value="<%=hist.draw%>"></td>
-                        <td><input type="text" class="form-control" id="updateTime"  value="<%=hist.updatedAt.substr(0,10)%>" disabled></td>
+                        <td><input type="text" class="form-control" id="<%=`updateScore${hist.id}`%> "  value="<%=hist.score%>" disabled></td>
+                        <td><input type="text" class="form-control" id="<%=`updateAttempt${hist.id}`%>"  value="<%=hist.attempt%>" disabled></td>
+                        <td><input type="text" class="form-control" id="<%=`updateWin${hist.id}`%>"  value="<%=hist.win%>"></td>
+                        <td><input type="text" class="form-control" id="<%=`updateLose${hist.id}`%>"  value="<%=hist.lose%>"></td>
+                        <td><input type="text" class="form-control" id="<%=`updateDraw${hist.id}`%>"  value="<%=hist.draw%>"></td>
+                        <td><input type="text" class="form-control" id="<%=`updateTime${hist.id}`%>"  value="<%=hist.updatedAt.substr(0,10)%>" disabled></td>
                         <td><button type="submit" class="btn btn-primary btn-hist" onclick="handleEdithistory(<%=hist.id%>)">Update</button></td>
                         <td><button type="submit" class="btn btn-danger btn-hist" onclick="handleDeleteHistory(<%=hist.id%>)">Delete</button></td>
                     </tr>
