@@ -80,11 +80,10 @@ const handleDeleteHistory = async (histId) => {
 }
 
 //UPDATE histories
-const handleEdithistory = async (histId) => {
+const handleEdithistory = async(histId) => {
   let Win = document.getElementById("updateWin").value
   let Lose = document.getElementById("updateLose").value
   let Draw = document.getElementById("updateDraw").value
-  
   const resp = await fetch(`http://localhost:4030/histories/${histId}`, {
     method: 'PUT',
     headers: {
@@ -95,7 +94,7 @@ const handleEdithistory = async (histId) => {
       attempt: parseInt(Win)+parseInt(Lose)+parseInt(Draw),
       win: Win,
       lose: Lose,
-      draw: Draw
+      draw: Draw,
     })
   })
   if(resp.status === 202){

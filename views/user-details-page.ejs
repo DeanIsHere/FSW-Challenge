@@ -91,7 +91,8 @@ margin-bottom: 30px;
                     <th scope="col">Attempt</th>
                     <th scope="col">Win</th>
                     <th scope="col">Lose</th>
-                    <th scope="col">draw</th>
+                    <th scope="col">Draw</th>
+                    <th scope="col">Time</th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -106,6 +107,7 @@ margin-bottom: 30px;
                         <td><input type="text" class="form-control" id="updateWin"  value="<%=hist.win%>"></td>
                         <td><input type="text" class="form-control" id="updateLose"  value="<%=hist.lose%>"></td>
                         <td><input type="text" class="form-control" id="updateDraw"  value="<%=hist.draw%>"></td>
+                        <td><input type="text" class="form-control" id="updateTime"  value="<%=hist.updatedAt.substr(0,10)%>" disabled></td>
                         <td><button type="submit" class="btn btn-primary btn-hist" onclick="handleEdithistory(<%=hist.id%>)">Update</button></td>
                         <td><button type="submit" class="btn btn-danger btn-hist" onclick="handleDeleteHistory(<%=hist.id%>)">Delete</button></td>
                     </tr>
@@ -118,7 +120,8 @@ margin-bottom: 30px;
                         <td><input type="text" class="form-control" id="inputLose" placeholder="Input Lose" ></td>
                         <td><input type="text" class="form-control" id="inputDraw" placeholder="Input Draw" ></td>
                         <td></td>
-                        <td><button type="submit" class="btn btn-warning btn-hist" onclick="addHistories(<%= userBiodata.id %>)">Add</button></td>
+                        <td></td>
+                        <td><button type="submit" class="btn btn-warning btn-hist" onclick="addHistories(<%=userBiodata.id%>)">Add</button></td>
                     </tr>
                 </tbody>
               </table>
