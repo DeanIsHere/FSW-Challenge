@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "setup-package": "npm install ejs; npm install body-parser; npm install express; npm install pg; npm install sequelize; npm install md5",
+    "setup-package": "npm install ejs; npm install body-parser; npm install express; npm install pg; npm install sequelize; npm install md5; npm install node-fetch@2",
     "setup-db": "sequelize model:create --name users --attributes username:string, password:string; sequelize model:create --name biodatas --attributes userID:integer, fullname:string, address:string, email:string, age:integer, userId:integer;sequelize model:create --name histories --attributes userID:integer, score:integer, attempt:integer, win:integer, lose:integer, draw:integer, userId:integer"
   },
   "repository": {
