@@ -25,12 +25,13 @@
         </tr>
         </thead>
         <tbody>
+            <% number = 0 %> 
             <% userData.forEach(user => { %>
                 <tr>
-                    <th scope="row"><%= user.id %> </th>
+                    <th scope="row"><%= number += 1 %> </th>
                     <td><%= user.id %></td>
                     <td><%= user.username %></td>
-                    <td><a href="/user-details-page/<%= user.id %> " >Details</a></td>
+                    <td><a class ="btn btn-outline-warning"href="/user-details-page/<%= user.id %> " >Details</a></td>
                 </tr>
             <% }) %>
         <tr>

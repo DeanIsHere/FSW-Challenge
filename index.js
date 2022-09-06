@@ -18,13 +18,6 @@ app.use('/JS', express.static(__dirname+'/JS'))
 app.use('/game-assets', express.static(__dirname+'/game-assets'))
 app.use('/assets', express.static(__dirname+'/assets'))
 
-// user details page
-app.get('/user-details-page/:id',async(req,res)=>{
-  const resp = await fetch(`http://localhost:4030/user-details/${req.params.id}`)
-  const data = await resp.json()
-
-  res.render("user-details-page",{userBiodata: data})
-})
 // read user data from json
 app.get('/super-user', function (req, res) {
     res.status(404).send(retrieveAllData('user.json')) 
@@ -138,15 +131,22 @@ app.get('/user-details/:id', async (req, res) => {
 })
 //UPDATE biodatas
 app.put('/biodata/:id', jsonParser, async (req,res) => {
-  
-  const data = await biodatas.findByPk(req.params.id)
+  const data = await biodatas.findOne({
+                        where:{
+                          userID: req.params.id
+                        }
+                      })
         data.fullname= req.body.fullname,
         data.address= req.body.address,
         data.email= req.body.email,
         data.age= req.body.age
   data.save()
+  const data2 = await users.findByPk(req.params.id)
+        data2.password= req.body.password,
+  data2.save()
   res.status(202).send('Data has been edited')
 })
+
 // UPDATE histories
 app.put('/histories/:id', jsonParser, async (req,res) => {
   
@@ -189,7 +189,7 @@ app.delete('/user-histories-delete/:id', async(req,res) => {
   try {   
     const dataHistories = await histories.findOne({
       where:{
-        userID: req.params.id
+        id: req.params.id
       }
     })
     dataHistories.destroy()
