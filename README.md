@@ -18,3 +18,5 @@ super user account:
 CMD:
 - npm start to start the app
 - npm setup-package to install required package
+
+main page : http://localhost:4030/
