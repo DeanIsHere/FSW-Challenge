@@ -14,3 +14,7 @@ super user account:
   
   username :iepac
   password: ac123
+
+CMD:
+- npm start to start the app
+- npm setup-package to install required package
