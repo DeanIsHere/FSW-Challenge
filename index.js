@@ -26,7 +26,7 @@ app.get('/user-details-page/:id',async(req,res)=>{
   res.render("user-details-page",{userBiodata: data})
 })
 // read user data from json
-app.get('/', function (req, res) {
+app.get('/super-user', function (req, res) {
     res.status(404).send(retrieveAllData('user.json')) 
     })
   // user login
@@ -55,7 +55,7 @@ app.get('/', function (req, res) {
   })
 
   // main page
-  app.get('/main-page', (req, res)=>{
+  app.get('/', (req, res)=>{
     res.render("main-page")
   })
   // game page
@@ -159,7 +159,46 @@ app.put('/histories/:id', jsonParser, async (req,res) => {
   data.save()
   res.status(202).send('Data has been edited')
 })
-//DELETE biodatas
+//DELETE biodatas+users
+app.delete('/user-delete/:id', async(req,res) => {
+  try {
+    const dataUser = await users.findByPk(req.params.id)
+    
+    const dataBio = await biodatas.findOne({
+      where:{
+        userID: req.params.id
+      }
+    })
+    
+    dataUser.destroy()
+    dataBio.destroy()
+    histories.destroy({
+      where:{
+        userID:req.params.id
+      }
+    })
+
+    res.status(202).send('USER DELETED')
+    
+  } catch (error) {
+    res.status(422).send('UNABLE TO DELETE USER')
+  }
+})
+//DELETE HISTORIES
+app.delete('/user-histories-delete/:id', async(req,res) => {
+  try {   
+    const dataHistories = await histories.findOne({
+      where:{
+        userID: req.params.id
+      }
+    })
+    dataHistories.destroy()
+    res.status(202).send('USER DELETED')
+  } catch (error) {
+    res.status(422).send('UNABLE TO DELETE USER')
+  }
+})
+
 
 //PORT
 app.listen(4030, () => {

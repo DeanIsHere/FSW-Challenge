@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Record</title>
-    <link rel="stylesheet" href="CSS/user-details-page.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
@@ -25,47 +24,59 @@ h1{
 .user-information-box{
     margin-bottom: 15px;
 }
+
+.tombol-back{
+text-align: end;
+margin-bottom: 30px;
+}
 </style>
 </head>
 <body>
     <h1><%= userBiodata.username %>  Information</h1>
     <div class="user-details">
+        <div class="tombol-back "><a class="btn btn-outline-warning" href="/user-list-page" role="button">back</a></div>
         <div class="row g-3">
             <div class="user-information-box col-12">
+                <label  class="form-label">USER ID</label>
+                <input type="text" class="form-control" id="updateUserID" placeholder="Input User ID" value="<%= userBiodata.biodata.userID %>" disabled>
+            </div>
+
+            <div class="user-information-box col-12">
                 <label  class="form-label">USER NAME</label>
-                <input type="text" class="form-control" id="inputUserame" placeholder="Input User Name" value="<%= userBiodata.username %>" disabled>
+                <input type="text" class="form-control" id="updateUsername" placeholder="Input User Name" value="<%= userBiodata.username %>" disabled>
             </div>
 
             <div class="user-information-box col-12">
                 <label  class="form-label">PASSWORD</label>
-                <input type="text" class="form-control" id="inputPassword" placeholder="Input Password" value="<%= userBiodata.password %>">
+                <input type="text" class="form-control" id="updatePassword" placeholder="Input Password" value="<%= userBiodata.password %>" disabled>
             </div>
 
             <div class="user-information-box col-12">
                 <label  class="form-label">FULLNAME</label>
-                <input type="text" class="form-control" id="inputFullname" placeholder="Input Fullname" value="<%= userBiodata.biodata.fullname %>">
+                <input type="text" class="form-control" id="updateFullname" placeholder="Input Fullname" value="<%= userBiodata.biodata.fullname %>">
             </div>
             
             <div class="user-information-box col-12">
                 <label class="form-label">ADDRESS</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Input Address" value="<%= userBiodata.biodata.address %>">
+                <input type="text" class="form-control" id="updateAddress" placeholder="Input Address" value="<%= userBiodata.biodata.address %>">
             </div>
             
             <div class="user-information-box col-12">
                 <label class="form-label">EMAIL</label>
-                <input type="text" class="form-control" id="inputEmail" placeholder="Input Email" value="<%= userBiodata.biodata.email %>">
+                <input type="text" class="form-control" id="updateEmail" placeholder="Input Email" value="<%= userBiodata.biodata.email %>">
             </div>
 
             <div class="user-information-box col-12">
                 <label class="form-label">AGE</label>
-                <input type="text" class="form-control" id="inputAge" placeholder="Input Age" value="<%= userBiodata.biodata.age %>">
+                <input type="text" class="form-control" id="updateAge" placeholder="Input Age" value="<%= userBiodata.biodata.age %>">
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-primary" onclick=handleEditBiodata(<%= userBiodata.biodata.id %>)>Update</button>
+            <button type="submit" class="btn btn-danger" onclick=handleDeleteBiodata(<%= userBiodata.id %>)>Delete</button>
         </div>
     </div>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="/JS/script-update-delete.js"></script>
 </body>
 </html>
