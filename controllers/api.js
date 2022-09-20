@@ -1,6 +1,6 @@
 const { hashSync, compareSync } = require("bcrypt")
 const jwt  = require('jsonwebtoken')
-const UserModel = require("../models/user")
+const { user } = require("../models")
 
 exports.protected = (req, res) => {
   console.log(req.user)
@@ -11,10 +11,9 @@ exports.protected = (req, res) => {
 }
 
 exports.register = async (req, res) => {
-  const data = await UserModel.create({
+  const data = await user.create({
     username: req.body.username,
     password: hashSync(req.body.password, 10),
-    job: req.body.job,
     role: req.body.role
   })
 
@@ -22,7 +21,6 @@ exports.register = async (req, res) => {
     message: 'User created successfully',
     user: {
       username: data.username,
-      job: data.job,
       role: data.role
     }
   })
@@ -30,7 +28,11 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   // query user ke db
-  const userData = await UserModel.findOne({ username: req.body.username })
+  const userData = await user.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
 
   // kalau usernya ga exist, kasih response user not found
   if (!userData){
@@ -40,7 +42,6 @@ exports.login = async (req, res) => {
   }
   
   // kalau passwordnya salah
-  // if( hashSync(req.body.password) !== userData.password ){
   if( !compareSync(req.body.password, userData.password) ){
     return res.status(401).send({
       message: 'Incorrect Password'
@@ -49,7 +50,6 @@ exports.login = async (req, res) => {
 
   const payload = {
     username: userData.username,
-    job: userData.job,
     role: userData.role
   }
 
