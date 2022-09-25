@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       room_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       player1_id: {
         type: Sequelize.INTEGER
