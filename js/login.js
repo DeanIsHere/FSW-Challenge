@@ -20,9 +20,15 @@ const submitLogin = async () => {
       console.log(data.token)
       if(data.user.role === 'admin'){
         console.log('aku admin')
-        // location.href = '/admin-dashboard'
+        const page = await fetch('http://localhost:8989/admin-dashboard', {
+            method: 'GET',
+            headers: {
+              Authorization: localStorage.getItem('token-login')
+            }
+          })
+        console.log(page)
       }else{
-        // location.href = '/main-dashboard'
+        location.href = '/main-dashboard'
         console.log('aku player')
       }
     }else{
