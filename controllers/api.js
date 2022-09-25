@@ -11,6 +11,7 @@ exports.protected = (req, res) => {
 }
 
 exports.register = async (req, res) => {
+ try{
   const data = await user.create({
     username: req.body.username,
     password: hashSync(req.body.password, 10),
@@ -18,12 +19,19 @@ exports.register = async (req, res) => {
   })
 
   res.status(201).send({
-    message: 'User created successfully',
+    message: 'Register berhasil, silahkan login',
     user: {
       username: data.username,
       role: data.role
     }
   })
+ }catch(error){
+    res.status(422).send({
+      message: 'Periksa kembali data login anda',
+      pesan: error
+    })
+ }
+  
 }
 
 exports.login = async (req, res) => {
@@ -49,6 +57,7 @@ exports.login = async (req, res) => {
   }
 
   const payload = {
+    id: userData.id,
     username: userData.username,
     role: userData.role
   }
@@ -57,7 +66,23 @@ exports.login = async (req, res) => {
 
   res.send({
     message: 'Login Success',
-    token: `Bearer ${token}`
+    token: `Bearer ${token}`,
+    user: payload
   })
 }
 
+exports.createRoom = async (req, res) => {
+  try{
+    const data = await room.create({
+      room_name: req.body.room_name
+    })
+  
+    res.status(201).send({ message: 'Room berhasil dibuat',
+      room: data 
+    })
+   }catch(error){
+      res.status(422).send({
+        message: 'Periksa kembali nama room anda'
+      })
+   }
+} 

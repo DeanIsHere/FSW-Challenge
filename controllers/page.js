@@ -7,3 +7,8 @@ exports.mainDashboard = (req, res) => {
     console.log(req.user)
     res.render('mainDashboard', { username: req.user.username })
   }
+
+exports.loginPage = (req, res) => {
+  console.log(req.user)
+  res.render('login')
+}

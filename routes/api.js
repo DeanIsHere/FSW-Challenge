@@ -6,7 +6,9 @@ const apiController = require('../controllers/api')
 
 router.post('/register', jsonParser, apiController.register)
 router.post('/login', jsonParser, apiController.login)
+router.post('/create-room', jsonParser, apiController.createRoom)
 router.get('/protected', passport.authenticate('jwt', { session: false }), apiController.protected)
+
 
 module.exports = router
 
