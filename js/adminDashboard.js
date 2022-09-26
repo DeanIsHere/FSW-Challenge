@@ -55,7 +55,7 @@ const getRoomData = async () =>{
     roomList = roomList + `<tr><th>${element.id}</th>
                             <td>${element.room_name}</td>   
                             <td>${element.player1_id}</td>
-                            <td>${element.Player2_id}</td>
+                            <td>${element.player2_id}</td>
                             <td>${element.player1_pick}</td>
                             <td>${element.player2_pick}</td>
                             <td>${element.player1_score}</td>
@@ -111,10 +111,13 @@ const addRoomHandler = async () =>{
   }else{
     alert('NEW SERVER IS CREATED')
     location.reload()
-    // getServerData()
   }
 }
 
+const handleLogout = () => {
+  localStorage.removeItem('token-login')
+  location.href = '/login'
+}
 
 
 getRoomData()

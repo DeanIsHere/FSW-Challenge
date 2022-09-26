@@ -95,7 +95,7 @@ exports.createRoom = async (req, res) => {
 } 
 
 exports.putRoom = async (req, res) => {
-  const server = await room.findByPk(req.params.id)
+  try{const server = await room.findByPk(req.params.id)
   // console.log(server)
   // cek apakah sudah pernah mengisi
   if(server.player1_id === req.user.id){
@@ -164,32 +164,18 @@ exports.putRoom = async (req, res) => {
       server.player2_result = "WIN"
     }
   }
-
-  
-  
   server.save()
   res.status(202).send({
     message : "data has inserted",
     data : server
-  })
+  })}catch(error){
+    res.status(404).send('room not found')
+  }
 }
 
 exports.allRoom = async (req,res) => {
   const server = await room.findAll()
-  console.log(req.user.role)
-  console.log(server.room_name)
-  if(req.user.role === 'player'){
-    res.send({
-      message: "oke",
-      "room_name": server.room_name,
-      "player1_id": server.player1_id,
-      "player2_id": server.player2_id
-    })
-  }else{
-    if(req.user.role === 'admin'){
-      res.send(server)
-    }
-  }
+  res.send(server)
 }
 
 exports.playerResult = async (req,res) => {
@@ -201,7 +187,6 @@ exports.playerResult = async (req,res) => {
       ]
     }
   })
-
   res.send(data)
 }
 

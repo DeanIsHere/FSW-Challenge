@@ -13,3 +13,7 @@ exports.loginPage = (req, res) => {
 exports.registerPage = (req, res) => {
   res.render('register')
 }
+
+exports.fightPage = (req, res) => {
+  res.render('fightDashboard')
+}

@@ -33,6 +33,7 @@ router.put('/fight/:id',
 
 router.get('/room',
     passport.authenticate('jwt', { session: false }),
+    // customMiddleware.validateAdmin,
     apiController.allRoom)    
 
 router.get('/result',

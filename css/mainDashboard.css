@@ -9,3 +9,10 @@ h1 {
 .tablePlayer{
     width: 70%;
     margin:auto}  
+.pickSelect{
+    width: 70%;
+    margin:auto} 
+.logoutButton{
+    margin-left: 260px;
+    margin-top: 50px;
+    }

@@ -14,4 +14,6 @@ router.get('/login',pageController.loginPage)
 
 router.get('/register',pageController.registerPage)
 
+router.get('/fight/:id',pageController.fightPage)
+
 module.exports = router
