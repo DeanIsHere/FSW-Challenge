@@ -4,17 +4,14 @@ const pageController = require('../controllers/page')
 const customMiddleware = require('../utils/customMiddleware')
 const passport = require('passport');
 
-router.get('/admin-dashboard', 
-passport.authenticate('jwt', { session: false }),
-customMiddleware.validateAdmin, 
+router.get('/admin-dashboard',
 pageController.adminDashboard)
 
-router.get('/main-dashboard', 
-passport.authenticate('jwt', { session: false }),
-customMiddleware.validatePlayer, 
+router.get('/main-dashboard',  
 pageController.mainDashboard)
 
 router.get('/login',pageController.loginPage)
 
+router.get('/register',pageController.registerPage)
 
 module.exports = router

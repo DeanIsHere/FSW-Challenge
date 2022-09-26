@@ -13,19 +13,26 @@ exports.protected = (req, res) => {
 
 exports.register = async (req, res) => {
  try{
-  const data = await user.create({
-    username: req.body.username,
-    password: hashSync(req.body.password, 10),
-    role: req.body.role
-  })
-
-  res.status(201).send({
-    message: 'Register berhasil, silahkan login',
-    user: {
-      username: data.username,
-      role: data.role
-    }
-  })
+  console.log(req.body.role)
+  if(req.body.role == "admin" || req.body.role == "player"){
+    const data = await user.create({
+      username: req.body.username,
+      password: hashSync(req.body.password, 10),
+      role: req.body.role
+    })
+  
+    res.status(201).send({
+      message: 'Register berhasil, silahkan login',
+      user: {
+        username: data.username,
+        role: data.role
+      }
+    })
+  }else{
+    res.status(406).send({
+      message: 'pilih role anda'
+    })
+  }
  }catch(error){
     res.status(422).send({
       message: 'Periksa kembali data login anda'
@@ -89,7 +96,7 @@ exports.createRoom = async (req, res) => {
 
 exports.putRoom = async (req, res) => {
   const server = await room.findByPk(req.params.id)
-  console.log(server)
+  // console.log(server)
   // cek apakah sudah pernah mengisi
   if(server.player1_id === req.user.id){
     return res.send({
@@ -113,33 +120,33 @@ exports.putRoom = async (req, res) => {
     server.player2_score = 0
     for (let i = 0; i<3; i++){
       if(server.player1_pick[i] === server.player2_pick[i]){
-          console.log('Tie')    
+          // console.log('Tie')    
       }
       
       else if(server.player1_pick[i] === 'B'){
           if(server.player2_pick[i] === 'K'){
-              console.log('P2 Menang')
+              // console.log('P2 Menang')
               server.player2_score += 1  
           }else{
-              console.log('P1 Menang')
+              // console.log('P1 Menang')
               server.player1_score += 1  
           }}
       
       else if(server.player1_pick[i] === 'G'){
           if(server.player2_pick[i] === 'B'){
-              console.log('P2 Menang')
+              // console.log('P2 Menang')
               server.player2_score += 1
           }else{
-              console.log('P1 Menang')
+              // console.log('P1 Menang')
               server.player1_score += 1
       }}
       
       else if(server.player1_pick[i] === 'K'){
           if(server.player2_pick[i] === 'G'){
-              console.log('P2 Menang')
+              // console.log('P2 Menang')
               server.player2_score += 1
           }else{
-              console.log('P1 Menang')
+              // console.log('P1 Menang')
               server.player1_score += 1
           }}
     }
@@ -169,7 +176,20 @@ exports.putRoom = async (req, res) => {
 
 exports.allRoom = async (req,res) => {
   const server = await room.findAll()
-  res.send(server)
+  console.log(req.user.role)
+  console.log(server.room_name)
+  if(req.user.role === 'player'){
+    res.send({
+      message: "oke",
+      "room_name": server.room_name,
+      "player1_id": server.player1_id,
+      "player2_id": server.player2_id
+    })
+  }else{
+    if(req.user.role === 'admin'){
+      res.send(server)
+    }
+  }
 }
 
 exports.playerResult = async (req,res) => {
@@ -181,5 +201,31 @@ exports.playerResult = async (req,res) => {
       ]
     }
   })
+
   res.send(data)
+}
+
+exports.deleteRoom = async (req,res) => {
+  try{const dataRoom = await room.findByPk(req.params.id)
+  dataRoom.destroy()
+
+  res.status(202).send({message: 'room deleted'})
+}catch(error){
+  res.status(422).send({message: 'room deleted'})
+}
+}
+
+exports.playerList = async (req,res) => {
+  const player = await user.findAll()
+  res.send(player)
+}
+
+exports.deletePlayer = async (req,res) => {
+  try{const dataRoom = await user.findByPk(req.params.id)
+  dataRoom.destroy()
+
+  res.status(202).send({message: 'user deleted'})
+}catch(error){
+  res.status(422).send({message: 'cannot deleted user'})
+}
 }

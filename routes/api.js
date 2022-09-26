@@ -5,6 +5,7 @@ const jsonParser = require('body-parser').json()
 const router = express.Router()
 const apiController = require('../controllers/api')
 const customMiddleware = require('../utils/customMiddleware')
+const { route } = require('./page')
 
 router.post('/register', 
     jsonParser, 
@@ -32,16 +33,29 @@ router.put('/fight/:id',
 
 router.get('/room',
     passport.authenticate('jwt', { session: false }),
-    customMiddleware.validateAdmin,
     apiController.allRoom)    
 
 router.get('/result',
     passport.authenticate('jwt', { session: false }),
     customMiddleware.validatePlayer,
-    apiController.playerResult
-)
+    apiController.playerResult)
 
-module.exports = router
+router.delete('/deleteRoom/:id',
+    passport.authenticate('jwt', { session: false }),
+    customMiddleware.validateAdmin,
+    apiController.deleteRoom)
+
+router.get('/player',
+    passport.authenticate('jwt', { session: false }),
+    customMiddleware.validateAdmin,
+    apiController.playerList)
+
+
+router.delete('/deletePlayer/:id',
+    passport.authenticate('jwt', { session: false }),
+    customMiddleware.validateAdmin,
+    apiController.deletePlayer)    
+    module.exports = router
 
 
 
