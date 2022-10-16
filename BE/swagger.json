@@ -318,6 +318,29 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "dean"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "dean@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "player updated (only change updated time)",
