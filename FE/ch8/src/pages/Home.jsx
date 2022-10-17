@@ -8,6 +8,9 @@ class Home extends Component{
     state = {
         players: [],
         showModal: false,
+        showDetails: false,
+        playerId: []
+
     }
     
     handleDelete = async(id) => {
@@ -21,29 +24,16 @@ class Home extends Component{
         }
     }
     
-    handleUpdate = async(id) => {
-        const data = {
-            username: " ",
-            email: " ",
-            password: " "
-          }
-        const resp = await fetch(`http://localhost:5000/api/players/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-         })
-        console.log(resp)
+    getPlayerId = async(id) => {
+        const resp = await fetch(`http://localhost:5000/api/players/${id}`)
+        const data = await resp.json()
+        const dataArr = data.message
         
-        if(resp.status === 200){
-            alert(`player dengan id = ${id} telah diupdate`)
-            this.getPlayersAll()
-        }else{
-            alert(`player dengan id = ${id} gagal diupdate`)
-        }    
+        this.setState({
+            playerId: dataArr
+        })
+        this.toggleDetails()
     }
-
     getPlayersAll = async() => {
         const resp = await fetch('http://localhost:5000/api/players')
         const data = await resp.json()
@@ -65,13 +55,25 @@ class Home extends Component{
         })
         this.getPlayersAll()
     }
+
+    toggleDetails = () => {
+        this.setState({
+            showDetails: !this.state.showDetails
+        })
+        this.getPlayersAll()
+    }
+
     render(){
         return(
             <div className="players-table">
                <PlayerTables 
                     players = {this.state.players} 
                     deleteFunc={this.handleDelete}
-                    updateFunc={this.handleUpdate}/>
+                    updateFunc={this.handleUpdate}
+                    showDetails={this.state.showDetails}
+                    toggleDetails= {this.toggleDetails}
+                    playerId ={this.state.playerId}
+                    getPlayerId={this.getPlayerId}/>
                <ModalCreatePlayer 
                     showModal={this.state.showModal}
                     toggleFunc = {this.toggleModal}

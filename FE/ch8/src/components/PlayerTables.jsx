@@ -4,19 +4,6 @@ import PlayerDetails from "./PlayerDetails";
 
 
 class PlayerTables extends Component{
-    state = {
-        showModalDetails: false
-    }
-    componentDidMount(){
-    }
-    
-    toggleModalDetails = () => {
-        this.setState({
-            showModalDetails: !this.state.showModalDetails
-        })
-        this.getPlayersAll()
-    }
-
     render(){
         return(
             <div className="players-table">
@@ -41,9 +28,8 @@ class PlayerTables extends Component{
                                     <td>{ply.username}</td>
                                     <td>{ply.email}</td>
                                     <td>
-                                    <Button variant="primary m-2" onClick={()=>{this.props.updateFunc(ply.id)}}>Update</Button>
                                     <Button variant="danger" onClick={()=>{this.props.deleteFunc(ply.id)}}>Delete</Button>
-                                    <Button variant="success m-2">details</Button>
+                                    <Button variant="success m-2" onClick={()=>{this.props.getPlayerId(ply.id)}}>details</Button>
                                     </td>
                                 </tr>
                                   ))
@@ -54,9 +40,10 @@ class PlayerTables extends Component{
                 </Container>
                 {/* for show player details */}
                 <PlayerDetails 
-                    showModal={this.state.showModalDetails}
-                    toggleFunc ={this.toggleModalDetails}
-               />
+                showDetails={this.props.showDetails}
+                toggleDetails= {this.props.toggleDetails}
+                playerId = {this.props.playerId}
+                />
             </div>
         )
     }
