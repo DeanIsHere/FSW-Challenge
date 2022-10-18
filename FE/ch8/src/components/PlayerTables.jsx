@@ -20,10 +20,10 @@ class PlayerTables extends Component{
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                this.props.players.map((ply) => (
+                            {   
+                                this.props.players.map((ply, index) => (
                                 <tr key={ply.id}>
-                                    <td>#</td>
+                                    <td>{index + 1}</td>
                                     <td>{ply.id}</td>
                                     <td>{ply.username}</td>
                                     <td>{ply.email}</td>
@@ -43,6 +43,9 @@ class PlayerTables extends Component{
                 showDetails={this.props.showDetails}
                 toggleDetails= {this.props.toggleDetails}
                 playerId = {this.props.playerId}
+                handleChange = {this.props.handleChange}
+                handleUpdate = {this.props.handleUpdate}
+                handleExp = {this.props.handleExp}
                 />
             </div>
         )

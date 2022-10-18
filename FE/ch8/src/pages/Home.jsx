@@ -2,22 +2,76 @@ import { Component } from "react";
 import PlayerTables from "../components/PlayerTables";
 import {Container, Button} from 'react-bootstrap'
 import ModalCreatePlayer from "../components/ModalCreatePlayer";
-import PlayerDetails from "../components/PlayerDetails";
+import ModalSearchPlayer from "../components/ModalSearchPlayer";
 
 class Home extends Component{
     state = {
         players: [],
         showModal: false,
         showDetails: false,
-        playerId: []
+        playerId: [],
+        searching: "",
+        showSearch: false,
+        username: "",
+        email: "",
+        password: "",
+        exp: 0
 
     }
-    
+
+    handleExp = async(id) => {
+        const data = {
+            exp: this.state.exp,
+          }
+      
+          const resp = await fetch(`http://localhost:5000/api/players/exp/${id}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+      
+          if(resp.status === 200){
+            this.toggleDetails()
+            alert(`${this.state.exp} EXP ditambahkan ke ${this.state.playerId.username}`)
+          }
+    }
+
+    handleUpdate = async(id) => {
+        const data = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+          }
+        const resp = await fetch(`http://localhost:5000/api/players/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+         })
+        
+        if(resp.status === 200){
+
+            this.toggleDetails()
+        }else{
+            alert("Update Failed")
+        }    
+    }
+
+    handleChange = (event) => {
+
+        this.setState({
+          [event.target.id]: event.target.value
+        })
+
+      }
+
     handleDelete = async(id) => {
         const resp = await fetch(`http://localhost:5000/api/players/${id}`, {
             method: 'DELETE'
          })
-        console.log(resp)
         
         if(resp.status === 200){
             this.getPlayersAll()
@@ -30,7 +84,10 @@ class Home extends Component{
         const dataArr = data.message
         
         this.setState({
-            playerId: dataArr
+            playerId: dataArr,
+            username: dataArr.username,
+            email: dataArr.email,
+            password: dataArr.password
         })
         this.toggleDetails()
     }
@@ -63,6 +120,13 @@ class Home extends Component{
         this.getPlayersAll()
     }
 
+    toggleSearch = () => {
+        this.setState({
+            showSearch: !this.state.showSearch
+        })
+        this.getPlayersAll()
+    }
+
     render(){
         return(
             <div className="players-table">
@@ -73,14 +137,24 @@ class Home extends Component{
                     showDetails={this.state.showDetails}
                     toggleDetails= {this.toggleDetails}
                     playerId ={this.state.playerId}
-                    getPlayerId={this.getPlayerId}/>
+                    getPlayerId={this.getPlayerId}
+                    handleExp = {this.handleExp}
+                    handleChange = {this.handleChange}
+                    handleUpdate = {this.handleUpdate}
+                    />
                <ModalCreatePlayer 
                     showModal={this.state.showModal}
                     toggleFunc = {this.toggleModal}
                />
                <Container>
-               <Button variant="info" onClick={this.toggleModal}>Create New Player</Button>
+               <Button variant="outline-primary" onClick={this.toggleModal}>Create New Player</Button>
+               <Button variant="outline-warning m-2" onClick={this.toggleSearch}>Search  Player</Button>
                </Container>
+               <ModalSearchPlayer 
+               showSearch = {this.state.showSearch} 
+               players = {this.state.players}
+               toggleSearch={this.toggleSearch}
+               />
             </div>
         )
     }

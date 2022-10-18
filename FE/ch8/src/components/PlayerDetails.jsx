@@ -2,61 +2,6 @@ import { Component } from "react";
 import { Modal, Button, InputGroup, Form } from "react-bootstrap";
 
 class PlayerDetails extends Component{
-    state ={
-        username: this.props.playerId.username,
-        email: this.props.playerId.email,
-        password: this.props.playerId.password,
-        exp: 0
-    }
-
-    handleExp = async(id) => {
-        const data = {
-            exp: this.state.exp,
-          }
-      
-          const resp = await fetch(`http://localhost:5000/api/players/exp/${id}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-      
-          if(resp.status === 200){
-            this.props.toggleDetails()
-            alert(`${this.state.exp} EXP ditambahkan ke ${this.props.playerId.username}`)
-          }
-    }
-
-    handleUpdate = async(id) => {
-        const data = {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
-          }
-        const resp = await fetch(`http://localhost:5000/api/players/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-         })
-        
-        if(resp.status === 200){
-            console.log("updated")
-            this.props.toggleDetails()
-            window.location.reload()
-        }else{
-            console.log("update failed")
-        }    
-    }
-
-    handleChange = (event) => {
-        this.setState({
-          [event.target.id]: event.target.value
-        })
-      }
-    
     render(){
         return(
             <div>
@@ -73,7 +18,7 @@ class PlayerDetails extends Component{
                                 placeholder="id"
                                 id="id"
                                 value={this.props.playerId.id}
-                                onChange={this.handleChange}
+         
                                 disabled
                                 />
                             </InputGroup>
@@ -82,7 +27,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.username}
                                 id="username"
-                                onChange={this.handleChange}
+                                onChange={this.props.handleChange}
                                 />
                             </InputGroup>
                             <InputGroup className="mb-3">
@@ -90,7 +35,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.email}
                                 id="email"
-                                onChange={this.handleChange}
+                                onChange={this.props.handleChange}
                                 />
                             </InputGroup>
                             <InputGroup className="mb-3">
@@ -98,7 +43,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.password}
                                 id="password"
-                                onChange={this.handleChange}
+                                onChange={this.props.handleChange}
                                 />
                             </InputGroup>
                             <InputGroup className="mb-3">
@@ -106,7 +51,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.experience}
                                 id="experience"
-                                onChange={this.handleChange}
+                                
                                 disabled
                                 />
                             </InputGroup>
@@ -115,7 +60,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.lvl}
                                 id="lvl"
-                                onChange={this.handleChange}
+                                
                                 disabled
                                 />
                             </InputGroup>
@@ -124,7 +69,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.createdAt}
                                 id="createdAt"
-                                onChange={this.handleChange}
+                               
                                 disabled
                                 />
                             </InputGroup>
@@ -133,7 +78,7 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder={this.props.playerId.updatedAt}
                                 id="updatedAt"
-                                onChange={this.handleChange}
+                                
                                 disabled
                                 />
                             </InputGroup>
@@ -141,16 +86,16 @@ class PlayerDetails extends Component{
                                 <Form.Control
                                 placeholder="Add Experience"
                                 id="exp"
-                                onChange={this.handleChange}
+                                onChange={this.props.handleChange}
                                 />
-                                <Button variant="outline-secondary" onClick={()=>{this.handleExp(this.props.playerId.id)}} id="button-addon2">
+                                <Button variant="outline-secondary" onClick={()=>{this.props.handleExp(this.props.playerId.id)}} id="button-addon2">
                                 Button
                                 </Button>
                             </InputGroup>
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button variant="primary" onClick={()=>{this.handleUpdate(this.props.playerId.id)}}>Update</Button>
+                            <Button variant="primary" onClick={()=>{this.props.handleUpdate(this.props.playerId.id)}}>Update</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
