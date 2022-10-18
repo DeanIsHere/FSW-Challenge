@@ -22,8 +22,9 @@ class PlayerDetails extends Component{
             body: JSON.stringify(data)
           })
       
-          if(resp.status === 201){
-            this.props.toggleFunc()
+          if(resp.status === 200){
+            this.props.toggleDetails()
+            alert(`${this.state.exp} EXP ditambahkan ke ${this.props.playerId.username}`)
           }
     }
 
@@ -152,7 +153,6 @@ class PlayerDetails extends Component{
                             <Button variant="primary" onClick={()=>{this.handleUpdate(this.props.playerId.id)}}>Update</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
-                    {this.state.exp}
                 </Modal>
             </div>
         )
